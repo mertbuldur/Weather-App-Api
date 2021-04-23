@@ -2,6 +2,7 @@ import React,{ useState,useEffect} from 'react';
 import './App.css';
 
 function App() {
+  const API_TOKEN = "0d9ff353bc474ec9b5191551212304";
   const [loading,setLoading] = useState(null);
   const [coords,setCoords] = useState(null);
   const [current,setCurrent] = useState({
@@ -31,7 +32,7 @@ function App() {
 
   useEffect(() => {
       setLoading(true);
-      const apiURL = `https://api.weatherapi.com/v1/current.json?key=0d9ff353bc474ec9b5191551212304&q=${coords}&aqi=no`;
+      const apiURL = `https://api.weatherapi.com/v1/current.json?key=${API_TOKEN}&q=${coords}&aqi=no`;
       fetch(apiURL).then(res => res.json()).then((data) => {
         setCurrent({
           temp:data.current.temp_c,
